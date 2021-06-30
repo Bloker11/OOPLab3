@@ -5,6 +5,7 @@ import com.company.devices.Phone;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Human extends Animal {
@@ -37,6 +38,7 @@ public class Human extends Animal {
         this.garage = new Car[sizeOfGarage];
 
     }
+
     public Car getCar(int whichCar) {
         return this.garage[whichCar];
     }
@@ -70,25 +72,34 @@ public class Human extends Animal {
     }
 
     public void carsValue(){
-        double totalValue = 0;
-        for(int i=0;i< this.garage.length;i++){
-            totalValue =+this.garage[i].getValue();
-            
+        double totalValue=0;
+        for(int i=0;i<garage.length;i++){
+            totalValue +=getCar(i).getValue();
+
         }
-        System.out.println("Total value:"+totalValue);
+        System.out.println("Total value: "+totalValue);
     }
     public void carsSortedByAge(){
+        Car tmp;
         for(int i=0;i< garage.length-1;i++){
-            for(int j=0;i< garage.length-i-1;j++){
-                if(garage[j].getYearOfProduction()>garage[j+1].getYearOfProduction()){
-                    Car tmp = garage[j];
-                    garage[j]=garage[j+1];
-                    garage[j+1] = tmp;
+            for(int j=0;j< garage.length-i-1;j++)
+                if (garage[j].getYearOfProduction() > garage[j + 1].getYearOfProduction()) {
+                    tmp = garage[j];
+                    garage[j] = garage[j + 1];
+                    garage[j + 1] = tmp;
+
                 }
-            }
+
         }
 
     }
+    public void printArray(){
+        for(int i=0;i<garage.length;i++){
+            System.out.println("Car: "+garage[i].getProducer()+" "+garage[i].getModel()+", Year of production: "+garage[i].getYearOfProduction());
+        }
+    }
+
+
     public void isGarageFull() throws Exception {
         boolean b = false;
         for(int i=0;i< garage.length;i++){
@@ -105,6 +116,7 @@ public class Human extends Animal {
     public void firstAvailableSpot(){
         for(int i=0;i< garage.length;i++){
             if(garage[i]==null){
+
 
             }
         }

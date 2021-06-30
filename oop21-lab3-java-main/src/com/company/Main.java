@@ -9,34 +9,62 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Car fiat = new Car();
         fiat.engineSize = 1.9;
         fiat.fuelType = "Diesel";
         fiat.setProducer("Fiat");
         fiat.setModel("Bravo");
-        fiat.setValue(2000.00);
-        Car asd = new Car();
-        asd.engineSize = 1.9;
-        asd.fuelType = "Diesel";
-        asd.setProducer("Fiat");
-        asd.setModel("Bravo");
-        asd.setValue(2000.00);
+        fiat.setValue(4000.00);
+        fiat.setYearOfProduction(1999);
 
-        Human me = new Human(5);
+        Car hyundai = new Car();
+        hyundai.engineSize = 1.9;
+        hyundai.fuelType = "Diesel";
+        hyundai.setProducer("Hyundai");
+        hyundai.setModel("Tucson");
+        hyundai.setValue(1000.00);
+        hyundai.setYearOfProduction(1989);
+
+        Car ford = new Car();
+        ford.engineSize = 1.9;
+        ford.fuelType = "Diesel";
+        ford.setProducer("Ford");
+        ford.setModel("Mustang");
+        ford.setValue(1000.00);
+        ford.setYearOfProduction(1979);
+
+        Human me = new Human(3);
         me.firstName = "Jan";
         me.lastName = "Kowalski";
         me.setCar(fiat,0);
-        me.setCar(asd,1);
+        me.setCar(hyundai,1);
+        me.setCar(ford,2);
         me.cash = 2000.0;
 
+        Human buyer = new Human(2);
+        buyer.firstName = "Ignacy";
+        buyer.lastName = "Bezglacy";
+        buyer.cash = 20000.0;
+
+
         me.carsValue();
+        me.carsSortedByAge();
+        me.printArray();
+
+        ford.sell(me,buyer,10.0,2);
+        fiat.sell(me,buyer,10.0,0);
 
 
         Animal dog = new Animal("dog");
         dog.name = "Szarik";
         Animal cat = new Animal("cat");
         cat.name = "Puszek";
+
+
+
+
+
 
        /* me.addPet(dog);
         me.addPet(cat);
